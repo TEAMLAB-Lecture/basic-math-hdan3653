@@ -6,7 +6,6 @@
 여기서 간단한 수학을 하는 프로그램을 만들것입니다. 
 """
 
-
 def get_greatest(number_list):
     """
     주어진 리스트에서 가장 큰 숫자를 반환함
@@ -24,7 +23,7 @@ def get_greatest(number_list):
             >>> bm.get_greatest(number_list)
             99
     """
-    greatest_number = None
+    greatest_number = max(number_list)
     return greatest_number
 
 
@@ -45,7 +44,7 @@ def get_smallest(number_list):
             >>> bm.get_smallest(number_list)
             11
     """
-    smallest_number = None
+    smallest_number = min(number_list)
     return smallest_number
 
 
@@ -66,7 +65,13 @@ def get_mean(number_list):
             >>> bm.get_mean(number_list)
             47
     """
-    mean = None
+    mean = 0
+
+    for i in range(len(number_list)):
+        mean += number_list[i]
+
+    mean /= len(number_list)
+
     return mean
 
 
@@ -91,4 +96,16 @@ def get_median(number_list):
             35.5
     """
     median = None
+
+    number_list.sort()
+    
+    if len(number_list) % 2 == 0:
+        index = len(number_list)//2
+        num1 = number_list[index-1]
+        num2 = number_list[index]
+        median = (num1 + num2) / 2
+    else:
+        index = len(number_list)//2
+        median = number_list[index]
+
     return median
